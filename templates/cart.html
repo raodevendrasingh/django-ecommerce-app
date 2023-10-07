@@ -1,1 +1,163 @@
-<h2>cart</h2>
+{% extends 'base.html' %} {% load static %}
+
+<!-- content starts here -->
+{% block content %}
+<div class="container mx-auto py-8 px-4 pt-4 border shadow-lg">
+	<a
+		class="border-2 border-slate-700 text-black px-2 py-2 rounded-md hover:bg-slate-700 hover:text-white"
+		href="/"
+		>&#x2190; Continue Shopping</a
+	>
+	<br />
+	<br />
+	<br />
+	<hr />
+
+	<div class="relative overflow-x-auto">
+		<table class="w-full text-sm text-left text-gray-500">
+			<thead class="text-xs text-gray-700 uppercase bg-gray-50">
+				<tr>
+					<th scope="col" class="px-6 py-3">Items: <strong>3</strong></th>
+					<th scope="col" class="px-6 py-3">
+						Total: &#8377;<strong>199</strong>
+					</th>
+					<th scope="col" class="px-6 py-3">
+						<button
+							class="bg-green-600 float-right text-white py-2 px-4 rounded-md hover:bg-green-800"
+						>
+							<a href="/checkout">Checkout</a>
+						</button>
+					</th>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+<!-- upper div with checkout option -->
+
+<br />
+<div class="container mx-auto py-6 px-4 border shadow-lg">
+	<div class="flex flex-col">
+		<div class="flex">
+			<div class="flex-1"></div>
+			<!-- product image -->
+			<div class="flex-1 font-bold">Item</div>
+			<div class="flex-1 font-bold">Price</div>
+			<div class="flex-1 font-bold">Quantity</div>
+			<div class="flex-1 font-bold">Total</div>
+		</div>
+		<!-- second div heading  -->
+		<!-- add for loop below -->
+		<div class="flex items-center">
+			<div class="flex-1">
+				<img class="w-24" src="{% static 'img/placeholder.png' %}" />
+			</div>
+			<div class="flex-1">
+				<p>Product 1</p>
+			</div>
+			<div class="flex-1">
+				<p>&#8377;20</p>
+			</div>
+			<div class="flex-1">
+				<div class="flex items-center">
+					<button class="btn btn-primary border-2 rounded-lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-5 h-5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 4.5v15m7.5-7.5h-15"
+							/>
+						</svg>
+					</button>
+
+					<span class="px-2">2</span>
+
+					<button class="btn btn-primary border-2 rounded-lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-5 h-5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 12h-15"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="flex-1">
+				<p>&#8377;40</p>
+			</div>
+		</div>
+		<!-- product listing div ends -->
+		<div class="pb-3"></div>
+		<!-- for loop ends below -->
+		<div class="flex items-center">
+			<div class="flex-1">
+				<img class="w-24" src="{% static 'img/placeholder.png' %}" />
+			</div>
+			<div class="flex-1">
+				<p>Product 1</p>
+			</div>
+			<div class="flex-1">
+				<p>&#8377;20</p>
+			</div>
+			<div class="flex-1">
+				<div class="flex items-center">
+					<button class="btn btn-primary border-2 rounded-lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-5 h-5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M12 4.5v15m7.5-7.5h-15"
+							/>
+						</svg>
+					</button>
+
+					<span class="px-2">2</span>
+
+					<button class="btn btn-primary border-2 rounded-lg">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="w-5 h-5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M19.5 12h-15"
+							/>
+						</svg>
+					</button>
+				</div>
+			</div>
+			<div class="flex-1">
+				<p>&#8377;32</p>
+			</div>
+		</div>
+	</div>
+	<!-- <hr class="px-2" /> -->
+</div>
+{% endblock content %} ds
