@@ -4,57 +4,83 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>AniMagic</title>
+		<title>{% block title %} AniMagic{% endblock %}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
 		<link
 			rel="icon"
 			type="image/x-icon"
 			href="{% static 'img/favicon.ico' %}"
 		/>
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+		></script>
+		<script
+			nomodule
+			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+		></script>
 	</head>
-	<body>
-		<nav class="bg-white border-gray-200 dark:bg-gray-900">
-			<div
-				class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
-			>
-				<a href="#" class="flex items-center">
-					<img src="" class="" alt="" />
-					<span
-						class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-						>AniMagic</span
-					>
-				</a>
+	<body antialiased class="font-[poppins]">
+		<nav
+			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between"
+		>
+			<div class="flex justify-between items-center">
+				<span
+					class="text-2xl text-white font-[Poppins] cursor-pointer font-medium"
+				>
+					<img class="h-10 inline" src="" />
+					<a href="/">AniMagic</a>
+				</span>
 
-				<div class="hidden w-full md:block md:w-auto" id="navbar-default">
-					<div
-						class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-					>
-						<div>
-							<a
-								href="#"
-								class="block pt-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-								>Login</a
-							>
-						</div>
-						<div class="flex items-center">
-							<a
-								href="/cart"
-								class="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-							>
-								<img
-									id="cart-icon"
-									src="{% static 'img/cart.png' %}"
-									class="h-9 pb-2"
-								/>
-							</a>
-							<span id="cart-total" class="mb-4 text-yellow-400 font-medium"
-								>0</span
-							>
-						</div>
-					</div>
-				</div>
+				<span class="text-3xl text-white cursor-pointer mx-2 md:hidden block">
+					<ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+				</span>
 			</div>
+
+			<ul
+				class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
+			>
+				<!-- <li class="mx-4 my-6 md:my-0">
+					<a href="#" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
+				</li> -->
+
+				<li class="mx-6 my-6 sm:my-0 text-xl">
+					<a href="/cart">
+						<ion-icon
+							class="text-3xl text-white hover:text-gray-300 duration-500"
+							name="cart"
+						></ion-icon>
+					</a>
+				</li>
+				<li>
+					<button
+						class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded"
+					>
+						Login
+					</button>
+				</li>
+
+				<!-- <h2 class=""></h2> -->
+			</ul>
 		</nav>
 		{% block content %} {% endblock %}
+		<script>
+			function Menu(e) {
+				let list = document.querySelector("ul");
+				e.name === "menu"
+					? ((e.name = "close"),
+					  list.classList.add("top-[80px]"),
+					  list.classList.add("opacity-100"))
+					: ((e.name = "menu"),
+					  list.classList.remove("top-[80px]"),
+					  list.classList.remove("opacity-100"));
+			}
+		</script>
 	</body>
 </html>

@@ -1,163 +1,126 @@
 {% extends 'base.html' %} {% load static %}
 
+<!-- title -->
+{% block title %} Cart {% endblock %}
+
 <!-- content starts here -->
 {% block content %}
-<div class="container mx-auto py-8 px-4 pt-4 border shadow-lg">
-	<a
-		class="border-2 border-slate-700 text-black px-2 py-2 rounded-md hover:bg-slate-700 hover:text-white"
-		href="/"
-		>&#x2190; Continue Shopping</a
-	>
-	<br />
-	<br />
-	<br />
-	<hr />
 
-	<div class="relative overflow-x-auto">
-		<table class="w-full text-sm text-left text-gray-500">
-			<thead class="text-xs text-gray-700 uppercase bg-gray-50">
-				<tr>
-					<th scope="col" class="px-6 py-3">Items: <strong>3</strong></th>
-					<th scope="col" class="px-6 py-3">
-						Total: &#8377;<strong>199</strong>
-					</th>
-					<th scope="col" class="px-6 py-3">
-						<button
-							class="bg-green-600 float-right text-white py-2 px-4 rounded-md hover:bg-green-800"
-						>
-							<a href="/checkout">Checkout</a>
-						</button>
-					</th>
-				</tr>
-			</thead>
-		</table>
+<div class="mx-auto p-4 container border shadow-md">
+	<button
+		class="border-2 border-slate-700 text-black px-2 py-2 rounded-md hover:bg-slate-700 hover:text-white"
+	>
+		<a href="/">&#x2190; Continue Shopping</a>
+	</button>
+
+	<br /><br />
+	<hr />
+	<div
+		class="w-full bg-white flex justify-between items-center rounded-md pt-4 mb-2"
+	>
+		<div class="pl-4 text-lg">Items: 5</div>
+		<div class="text-lg">Total: &#8377;847</div>
+		<div>
+			<button
+				class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md"
+			>
+				<a href="/checkout">Proceed to Checkout</a>
+			</button>
+		</div>
 	</div>
 </div>
-<!-- upper div with checkout option -->
+<div class="mx-auto p-4 mt-4 container border shadow-lg">
+	<!-- Cart Items -->
+	<div class="bg-white shadow-sm rounded-lg overflow-hidden">
+		<!-- Single Cart Item (Repeat this section for each item in the cart) -->
+		<div class="flex justify-between items-center p-4 border-b border-gray-200">
+			<!-- Product Image -->
+			<div>
+				<img
+					src="{% static 'img/placeholder.png' %}"
+					alt="Product Image"
+					class="w-20 h-20 rounded-md mb-4 md:mb-0 md:mr-4"
+				/>
+			</div>
 
-<br />
-<div class="container mx-auto py-6 px-4 border shadow-lg">
-	<div class="flex flex-col">
-		<div class="flex">
-			<div class="flex-1"></div>
-			<!-- product image -->
-			<div class="flex-1 font-bold">Item</div>
-			<div class="flex-1 font-bold">Price</div>
-			<div class="flex-1 font-bold">Quantity</div>
-			<div class="flex-1 font-bold">Total</div>
-		</div>
-		<!-- second div heading  -->
-		<!-- add for loop below -->
-		<div class="flex items-center">
-			<div class="flex-1">
-				<img class="w-24" src="{% static 'img/placeholder.png' %}" />
+			<!-- Product Name (Displayed above on md and higher screens) -->
+			<div>
+				<h2 class="text-xl font-medium">Product Name</h2>
 			</div>
-			<div class="flex-1">
-				<p>Product 1</p>
-			</div>
-			<div class="flex-1">
-				<p>&#8377;20</p>
-			</div>
-			<div class="flex-1">
-				<div class="flex items-center">
-					<button class="btn btn-primary border-2 rounded-lg">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M12 4.5v15m7.5-7.5h-15"
-							/>
-						</svg>
-					</button>
 
-					<span class="px-2">2</span>
-
-					<button class="btn btn-primary border-2 rounded-lg">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M19.5 12h-15"
-							/>
-						</svg>
-					</button>
-				</div>
+			<div>
+				<span class="text-gray-600 md:mr-2">Price:</span>
+				<span class="text-gray-600 font-medium">&#8377;199</span>
 			</div>
-			<div class="flex-1">
-				<p>&#8377;40</p>
+
+			<!-- Quantity -->
+			<div class="flex items-center">
+				<button
+					class="px-2 py-1 rounded-l-md border border-gray-300 hover:border-gray-400"
+				>
+					-
+				</button>
+				<span class="px-2 text-center border-y border-gray-300">2 </span>
+				<button
+					class="px-2 py-1 rounded-r-md border border-gray-300 hover:border-gray-400"
+				>
+					+
+				</button>
+			</div>
+
+			<!-- Price -->
+			<div>
+				<span class="text-gray-600 md:mr-2">Total:</span>
+				<span class="text-gray-600 font-semibold">&#8377;398</span>
 			</div>
 		</div>
-		<!-- product listing div ends -->
-		<div class="pb-3"></div>
-		<!-- for loop ends below -->
-		<div class="flex items-center">
-			<div class="flex-1">
-				<img class="w-24" src="{% static 'img/placeholder.png' %}" />
-			</div>
-			<div class="flex-1">
-				<p>Product 1</p>
-			</div>
-			<div class="flex-1">
-				<p>&#8377;20</p>
-			</div>
-			<div class="flex-1">
-				<div class="flex items-center">
-					<button class="btn btn-primary border-2 rounded-lg">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M12 4.5v15m7.5-7.5h-15"
-							/>
-						</svg>
-					</button>
 
-					<span class="px-2">2</span>
-
-					<button class="btn btn-primary border-2 rounded-lg">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="1.5"
-							stroke="currentColor"
-							class="w-5 h-5"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M19.5 12h-15"
-							/>
-						</svg>
-					</button>
-				</div>
+		<!-- Single Cart Item (Repeat this section for each item in the cart) -->
+		<div class="flex justify-between items-center p-4 border-b border-gray-200">
+			<!-- Product Image -->
+			<div>
+				<img
+					src="{% static 'img/placeholder.png' %}"
+					alt="Product Image"
+					class="w-20 h-20 rounded-md mb-4 md:mb-0 md:mr-4"
+				/>
 			</div>
-			<div class="flex-1">
-				<p>&#8377;32</p>
+
+			<!-- Product Name (Displayed above on md and higher screens) -->
+			<div>
+				<h2 class="text-xl font-medium">Product Name</h2>
+			</div>
+
+			<div>
+				<span class="text-gray-600 md:mr-2">Price:</span>
+				<span class="text-gray-600 font-medium">&#8377;149</span>
+			</div>
+
+			<!-- Quantity -->
+			<div class="flex items-center">
+				<button
+					class="px-2 py-1 rounded-l-md border border-gray-300 hover:border-gray-400"
+				>
+					-
+				</button>
+				<span class="px-2 text-center border-y border-gray-300">3 </span>
+				<button
+					class="px-2 py-1 rounded-r-md border border-gray-300 hover:border-gray-400"
+				>
+					+
+				</button>
+			</div>
+
+			<!-- Price -->
+			<div>
+				<span class="text-gray-600 md:mr-2">Total:</span>
+				<span class="text-gray-600 font-semibold">&#8377;447</span>
 			</div>
 		</div>
+
+		<!-- End Single Cart Item -->
+
+		<!-- Repeat the above single cart item section for each item in the cart -->
 	</div>
-	<!-- <hr class="px-2" /> -->
 </div>
 {% endblock content %} ds
