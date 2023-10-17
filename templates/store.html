@@ -4,28 +4,36 @@
 
 <div class="container mx-auto py-10">
 	<!-- <h1 class="text-3xl font-semibold text-gray-800 mb-6">Products</h1> -->
-	<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-		<!-- Product 1 -->
+	<div class="p-2 grid grid-cols-2 md:grid-cols-4 gap-4">
+		{% for product in products %}
+		<!-- Product starts here -->
 		<div class="bg-white rounded-lg shadow-md">
 			<!-- Product image -->
 			<img
-				src="{% static 'img/placeholder.png' %}"
+				src="{{ product.imageURL }}"
 				alt="Product 1"
-				class="w-full aspect-auto object-cover mb-2 rounded-md"
+				class="w-[150px] h-[75px] mb-2 rounded-md"
 			/>
 			<!-- Product name -->
-			<h2 class="text-lg font-semibold p-4 pt-2">Product Name 1</h2>
-			<!-- Product price -->
-			<div class="flex justify-between items-center p-4 pt-0">
-				<p class="text-gray-600">$99.99</p>
-				<button
-					class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
-				>
-					Add to Cart
-				</button>
+			<h2 class="text-lg font-semibold p-4 pt-2">{{ product.name }}</h2>
+			<!-- Product (price) - (wishlist) - (add to cart button) -->
+			<div class="flex justify-between items-baseline p-4 pt-0">
+				<p class="text-gray-600">&#8377;{{ product.price|floatformat:2 }}</p>
+				<div class="buttons flex">
+					<ion-icon
+						class="text-2xl px-4 text-red-500 mt-2"
+						name="heart-outline"
+					></ion-icon>
+					<button
+						class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600"
+					>
+						Add to Cart
+					</button>
+				</div>
 			</div>
 		</div>
-
+		{% endfor %}
+		<!-- product ends here -->
 		<!-- Repeat the above product card structure for the next 3 products -->
 	</div>
 </div>
