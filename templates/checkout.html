@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %}
 
 <!-- title -->
-{% block title %} Cart {% endblock %}
+{% block title %} Checkout {% endblock %}
 <!-- content starts here -->
 {% block content %}
 <div class="max-w-screen-xl mx-auto p-4">
@@ -26,6 +26,7 @@
 
 			<!-- Contents of the Cart -->
 			<!-- Place your cart contents here -->
+			{% for item in items %}
 			<div
 				class="flex justify-between items-center p-4 border-b border-gray-200"
 			>
@@ -33,7 +34,7 @@
 					<!-- Product Image -->
 					<div>
 						<img
-							src="{% static 'img/placeholder.png' %}"
+							src="{{ item.product.imageURL }}"
 							alt="Product Image"
 							class="w-[150px] h-[100px] rounded-md mb-4 md:mb-0 md:mr-4 border border-black"
 						/>
@@ -42,38 +43,48 @@
 					<!-- Product Name (Displayed above on md and higher screens) -->
 					<div>
 						<h2 class="text-base font-medium ml-4 md:pt-0 md:pr-3">
-							Product Name
+							{{ item.product.name }}
 						</h2>
 					</div>
 				</div>
 				<div class="flex justify-between p-2">
 					<div class="flex flex-col p-4">
 						<span class="text-gray-600 md:mx-2">Price:</span>
-						<span class="text-gray-600 font-medium md:mx-2">&#8377;199</span>
+						<span class="text-gray-600 font-medium md:mx-2"
+							>&#8377;{{ item.product.price|floatformat:2 }}</span
+						>
 					</div>
 
 					<!-- Quantity -->
 					<div class="flex flex-col p-4">
 						<span class="text-gray-600 md:mx-2">Quantity:</span>
-						<span class="text-gray-600 font-medium md:mx-2">5</span>
+						<span class="text-gray-600 font-medium md:mx-2"
+							>x{{ item.quantity }}</span
+						>
 					</div>
 
 					<!-- Total Price -->
 					<div class="flex flex-col p-4">
 						<span class="text-gray-600 md:mx-2">Total:</span>
-						<span class="text-gray-600 font-semibold md:mx-2">&#8377;398</span>
+						<span class="text-gray-600 font-semibold md:mx-2"
+							>&#8377;{{ item.get_total }}</span
+						>
 					</div>
 				</div>
 			</div>
+			{% endfor %}
 
 			<!-- Cart Total -->
 			<div class="bg-gray-100 pt-4 rounded-lg">
-				<h3 class="text-xl font-medium">Grand Total:</h3>
+				<h2 class="text-lg font-medium">Items: {{order.get_cart_items}}</h2>
+				<h3 class="text-xl font-medium">
+					Grand Total: &#8377;{{order.get_cart_total|floatformat:2}}
+				</h3>
 				<!-- Place your cart total information here -->
 			</div>
 		</div>
 
-		<!-- Div1 (Checkout Form) -->
+		<!-- Div1 (Checkout Form) --------------------------------------------------------------------------->
 		<div
 			class="flex-col md:w-1/2 md:order-1 p-4 bg-gray-100 rounded-md m-2 mt-3 md:mt-2 shadow-md"
 		>
