@@ -25,6 +25,28 @@
 			nomodule
 			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
 		></script>
+		<script type="text/javascript">
+			var user = "{{request.user}}";
+
+			function getToken(name) {
+				let cookieValue = null;
+				if (document.cookie && document.cookie !== "") {
+					const cookies = document.cookie.split(";");
+					for (let i = 0; i < cookies.length; i++) {
+						const cookie = cookies[i].trim();
+						// Does this cookie string begin with the name we want?
+						if (cookie.substring(0, name.length + 1) === name + "=") {
+							cookieValue = decodeURIComponent(
+								cookie.substring(name.length + 1)
+							);
+							break;
+						}
+					}
+				}
+				return cookieValue;
+			}
+			const csrftoken = getToken("csrftoken");
+		</script>
 	</head>
 	<body antialiased class="font-[poppins]">
 		<nav
@@ -34,8 +56,9 @@
 				<span
 					class="text-2xl text-white font-[Poppins] cursor-pointer font-medium"
 				>
-					<img class="h-10 inline" src="" />
-					<a href="/">AniMagic</a>
+					<a href="/">
+						<img class="h-10" src="{% static 'img/logo.png' %}" />
+					</a>
 				</span>
 
 				<span class="text-3xl text-white cursor-pointer mx-2 md:hidden block">
@@ -46,21 +69,22 @@
 			<ul
 				class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
 			>
-				<!-- <li class="mx-4 my-6 md:my-0">
-					<a href="#" class="text-xl hover:text-cyan-500 duration-500">HOME</a>
-				</li> -->
-
 				<li class="mx-6 my-6 sm:my-0 text-xl">
-					<a href="/cart">
-						<ion-icon
-							class="text-3xl text-white hover:text-gray-300 duration-500"
-							name="cart"
-						></ion-icon>
+					<a href="{% url 'cart' %}">
+						<div class="flex items-center">
+							<ion-icon
+								class="text-3xl text-white hover:text-gray-300 duration-500"
+								name="cart"
+							></ion-icon>
+							<span class="ml-1 text-white bg-red-500 p-1 rounded-lg text-xs">
+								{{ cartItems }}
+							</span>
+						</div>
 					</a>
 				</li>
 				<li>
 					<button
-						class="bg-cyan-400 text-white font-[Poppins] duration-500 px-6 py-2 mx-4 hover:bg-cyan-500 rounded"
+						class="bg-cyan-400 text-white font-[Poppins] duration-500 px-4 py-1 mx-4 hover:bg-cyan-500 rounded-lg"
 					>
 						Login
 					</button>
@@ -82,5 +106,6 @@
 					  list.classList.remove("opacity-100"));
 			}
 		</script>
+		<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 	</body>
 </html>
