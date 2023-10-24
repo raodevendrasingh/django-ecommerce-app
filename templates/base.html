@@ -50,7 +50,7 @@
 	</head>
 	<body antialiased class="font-[poppins]">
 		<nav
-			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between"
+			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between top-0 right-0 left-0 w-full z-10 fixed"
 		>
 			<div class="flex justify-between items-center">
 				<span
@@ -82,18 +82,86 @@
 						</div>
 					</a>
 				</li>
-				<li>
-					<button
-						class="bg-cyan-400 text-white font-[Poppins] duration-500 px-4 py-1 mx-4 hover:bg-cyan-500 rounded-lg"
-					>
-						Login
-					</button>
-				</li>
 
-				<!-- <h2 class=""></h2> -->
+				<li>
+					<div class="relative">
+						<span
+							class="text-2xl text-gray-200 cursor-pointer pr-5 pl-3 mt-2"
+							id="userDropdownToggle"
+						>
+							<ion-icon name="person"></ion-icon>
+						</span>
+						<ul
+							class="hidden absolute right-0 p-2 bg-slate-800 text-white rounded-lg"
+							id="userDropdown"
+						>
+							<li class="my-2 px-3"><a href="#">name</a></li>
+							<li class="my-2 px-3"><a href="#">Profile</a></li>
+							<li class="my-2 px-3"><a href="#">Settings</a></li>
+							<li class="my-2 px-3"><a href="#">Logout</a></li>
+						</ul>
+					</div>
+				</li>
 			</ul>
 		</nav>
+
 		{% block content %} {% endblock %}
+
+		<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+			<div
+				class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+			>
+				<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+					>© 2023
+					<a href="{% url 'store' %}" class="hover:underline">AniMagic™</a>. All
+					Rights Reserved.
+				</span>
+				<ul
+					class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+				>
+					<li>
+						<a href="#" class="mr-4 hover:underline md:mr-6">About</a>
+					</li>
+					<li>
+						<a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+					</li>
+					<li>
+						<a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+					</li>
+					<li>
+						<a href="#" class="hover:underline">Contact</a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+
+		<script>
+			// Get references to the toggle button and the dropdown menu
+			const userDropdownToggle = document.getElementById("userDropdownToggle");
+			const userDropdown = document.getElementById("userDropdown");
+
+			// Function to toggle the visibility of the user dropdown
+			function toggleUserDropdown() {
+				userDropdown.classList.toggle("hidden");
+			}
+
+			// Close the user dropdown if the user clicks outside of it
+			document.addEventListener("click", function (event) {
+				if (
+					userDropdown &&
+					userDropdownToggle &&
+					!userDropdownToggle.contains(event.target)
+				) {
+					userDropdown.classList.add("hidden");
+				}
+			});
+
+			// Add a click event listener to the userDropdownToggle element
+			userDropdownToggle.addEventListener("click", function (event) {
+				event.stopPropagation(); // Prevent the click event from propagating to the document
+				toggleUserDropdown();
+			});
+		</script>
 		<script>
 			function Menu(e) {
 				let list = document.querySelector("ul");

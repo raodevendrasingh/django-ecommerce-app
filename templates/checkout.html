@@ -4,10 +4,7 @@
 {% block title %} Checkout {% endblock %}
 <!-- content starts here -->
 {% block content %}
-<div class="max-w-screen-xl mx-auto p-4">
-	<!-- Navbar -->
-	<!-- Your navbar code goes here -->
-
+<div class="max-w-screen-xl mx-auto p-4 pt-24">
 	<div class="md:flex">
 		<!-- Div2 (Button to go back to cart, Cart Summary, Contents, Cart Total) -->
 		<div
@@ -85,145 +82,248 @@
 		</div>
 
 		<!-- Div1 (Checkout Form) --------------------------------------------------------------------------->
-		<div
-			class="flex-col md:w-1/2 md:order-1 p-4 bg-gray-100 rounded-md m-2 mt-3 md:mt-2 shadow-md"
-		>
-			<!-- Checkout Form -->
-			<!-- Text: Shipping Information -->
-			<p class="text-lg font-semibold mb-1">User Details</p>
-			<form>
-				<!-- First Name and Last Name -->
-				<div class="md:flex md:space-x-4">
-					<div class="md:w-1/2">
-						<label
-							for="first-name"
-							class="block text-gray-700 text-sm font-bold mb-2"
-						></label>
-						<input
-							type="text"
-							id="first-name"
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							placeholder="First Name"
-						/>
-					</div>
-					<div class="md:w-1/2">
-						<label
-							for="last-name"
-							class="block text-gray-700 text-sm font-bold mb-2"
-						></label>
-						<input
-							type="text"
-							id="last-name"
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							placeholder="Last Name"
-						/>
-					</div>
-				</div>
-
-				<!-- Email -->
-				<div class="mb-4">
-					<label
-						for="email"
-						class="block text-gray-700 text-sm font-bold mb-2"
-					></label>
-					<input
-						type="email"
-						id="email"
-						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						placeholder="Email"
-					/>
-				</div>
-
-				<!-- Horizontal Rule -->
-				<hr class="my-4 border-t border-gray-300" />
-
+		<div class="flex-col md:w-1/2 md:order-1">
+			<div
+				id="form-wrapper"
+				class="p-4 bg-gray-100 rounded-md m-2 mt-3 md:mt-2 shadow-md"
+			>
+				<!-- Checkout Form -->
 				<!-- Text: Shipping Information -->
-				<p class="text-lg font-semibold mb-4">Shipping Information</p>
 
-				<!-- Address -->
-				<div>
-					<label
-						for="address"
-						class="block text-gray-700 text-sm font-bold mb-2"
-					></label>
-					<input
-						type="text"
-						id="address"
-						class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-						placeholder="Address"
-					/>
-				</div>
+				<form id="form">
+					<div id="user-info">
+						<p class="text-lg font-semibold mb-1">User Details</p>
+						<!-- First Name and Last Name -->
+						<div class="md:flex md:space-x-4">
+							<div class="md:w-1/2">
+								<label
+									for="first-name"
+									class="block text-gray-700 text-sm font-bold mb-2"
+								></label>
+								<input
+									type="text"
+									id="first-name"
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									placeholder="First Name"
+								/>
+							</div>
+							<div class="md:w-1/2">
+								<label
+									for="last-name"
+									class="block text-gray-700 text-sm font-bold mb-2"
+								></label>
+								<input
+									type="text"
+									id="last-name"
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									placeholder="Last Name"
+								/>
+							</div>
+						</div>
 
-				<!-- City, State, Pin Code, and Phone Number -->
-				<div class="md:flex md:space-x-4">
-					<div class="md:w-1/2">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="city"
-						></label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							name="city"
-							id="city"
-							type="text"
-							placeholder="City"
-						/>
+						<!-- Email -->
+						<div class="mb-4">
+							<label
+								for="email"
+								class="block text-gray-700 text-sm font-bold mb-2"
+							></label>
+							<input
+								type="email"
+								id="email"
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								placeholder="Email"
+							/>
+						</div>
+						<!-- Horizontal Rule -->
+						<hr class="my-4 border-t border-gray-300" />
 					</div>
-					<div class="md:w-1/2 mt-4 md:mt-0">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="state"
-						></label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							name="state"
-							id="state"
-							type="text"
-							placeholder="State"
-						/>
-					</div>
-				</div>
-				<div class="mb-4 md:flex md:space-x-4">
-					<div class="md:w-1/2">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="pin-code"
-						></label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							name="pin_code"
-							id="pin-code"
-							type="text"
-							placeholder="Pin Code"
-						/>
-					</div>
-					<div class="md:w-1/2 mt-4 md:mt-0">
-						<label
-							class="block text-gray-700 text-sm font-bold mb-2"
-							for="ph-number"
-						></label>
-						<input
-							class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-							name="ph_num"
-							id="ph-number"
-							type="text"
-							placeholder="+91 XXXXX XXXXX"
-						/>
-					</div>
-				</div>
 
-				<!-- Submit Button -->
-				<div class="mt-6">
-					<button
-						type="submit"
-						class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg w-full"
-					>
-						Continue
-					</button>
-				</div>
-			</form>
+					<!-- Text: Shipping Information -->
+					<div id="shipping-info">
+						<p class="text-lg font-semibold mb-4">Shipping Information</p>
+
+						<!-- Address -->
+						<div>
+							<label
+								for="address"
+								class="block text-gray-700 text-sm font-bold mb-2"
+							></label>
+							<input
+								type="text"
+								name="address"
+								id="address"
+								class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+								placeholder="Address"
+							/>
+						</div>
+
+						<!-- City, State, Pin Code, and Phone Number -->
+						<div class="md:flex md:space-x-4">
+							<div class="md:w-1/2">
+								<label
+									class="block text-gray-700 text-sm font-bold mb-2"
+									for="city"
+								></label>
+								<input
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									name="city"
+									id="city"
+									type="text"
+									placeholder="City"
+								/>
+							</div>
+							<div class="md:w-1/2 mt-4 md:mt-0">
+								<label
+									class="block text-gray-700 text-sm font-bold mb-2"
+									for="state"
+								></label>
+								<input
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									name="state"
+									id="state"
+									type="text"
+									placeholder="State"
+								/>
+							</div>
+						</div>
+						<div class="mb-4 md:flex md:space-x-4">
+							<div class="md:w-1/2">
+								<label
+									class="block text-gray-700 text-sm font-bold mb-2"
+									for="pin-code"
+								></label>
+								<input
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									name="pin_code"
+									id="pin-code"
+									type="text"
+									placeholder="Pin Code"
+								/>
+							</div>
+							<div class="md:w-1/2 mt-4 md:mt-0">
+								<label
+									class="block text-gray-700 text-sm font-bold mb-2"
+									for="ph-number"
+								></label>
+								<input
+									class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+									name="ph_num"
+									id="ph-number"
+									type="text"
+									placeholder="+91 XXXXX XXXXX"
+								/>
+							</div>
+						</div>
+					</div>
+					<!-- Submit Button -->
+					<div id="form-button" class="mt-6">
+						<button
+							type="submit"
+							class="bg-green-500 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg w-full"
+						>
+							Continue
+						</button>
+					</div>
+				</form>
+				<br />
+			</div>
+			<div
+				id="payment-info"
+				class="p-4 hidden bg-gray-100 rounded-md m-2 mt-3 md:mt-2 space-x-3 shadow-md"
+			>
+				<small>Payment Gateway</small>
+				<br />
+				<button
+					id="make-payment"
+					class="bg-green-500 text-white font-semibold px-3 py-2 rounded-lg hover:bg-green-700"
+				>
+					Make Payment
+				</button>
+			</div>
 		</div>
 	</div>
 </div>
 
+<script type="text/javascript">
+	var shipping = "{{ order.shipping }}";
+
+	var total = "{{ order.get_cart_total|floatformat:2}}";
+
+	if (shipping == "False") {
+		document.getElementById("shipping-info").innerHTML = "";
+	}
+
+	if (user != "AnonymousUser") {
+		document.getElementById("user-info").innerHTML = "";
+	}
+
+	if (shipping == "False" && user != "AnonymousUser") {
+		document.getElementById("form-wrapper").classList.add("hidden");
+		document.getElementById("payment-info").classList.remove("hidden");
+	}
+
+	var form = document.getElementById("form");
+
+	form.addEventListener("submit", function (e) {
+		e.preventDefault();
+		console.log("Form Submitted");
+		document.getElementById("form-button").classList.add("hidden");
+		document.getElementById("payment-info").classList.remove("hidden");
+	});
+
+	document
+		.getElementById("make-payment")
+		.addEventListener("click", function (e) {
+			submitFormData();
+		});
+
+	function submitFormData() {
+		console.log("Payment button clicked");
+
+		var userFormData = {
+			fname: null,
+			lname: null,
+			email: null,
+			total: total,
+		};
+
+		var shippingInfo = {
+			address: null,
+			city: null,
+			state: null,
+			pincode: null,
+			contact: null,
+		};
+
+		if (user == "AnonymousUser") {
+			userFormData.fname = document.getElementById("first-name").value;
+			userFormData.lname = document.getElementById("last-name").value;
+			userFormData.email = document.getElementById("email").value;
+		}
+
+		if (shipping != "False") {
+			userFormData.address = document.getElementById("address").value;
+			userFormData.city = document.getElementById("city").value;
+			userFormData.state = document.getElementById("state").value;
+			userFormData.pincode = document.getElementById("pin-code").value;
+			userFormData.contact = document.getElementById("ph-number").value;
+		}
+		var url = "/process-order/";
+
+		fetch(url, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"X-CSRFToken": csrftoken,
+			},
+			body: JSON.stringify({ form: userFormData, shipping: shippingInfo }),
+		})
+			.then((response) => response.json())
+			.then((data) => {
+				console.log("Success:", data);
+				alert("Transaction Successful!");
+				window.location.href = "{% url 'store' %}";
+			});
+	}
+</script>
 {% endblock %}

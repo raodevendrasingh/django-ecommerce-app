@@ -6,7 +6,7 @@
 <!-- content starts here -->
 {% block content %}
 
-<div class="mx-auto p-4 container border shadow-md">
+<div class="mx-auto p-4 pt-24 container border shadow-md">
 	<button
 		class="border-2 border-slate-700 text-black px-2 py-2 rounded-md hover:bg-slate-700 hover:text-white"
 	>
@@ -38,9 +38,13 @@
 	<div class="bg-white shadow-sm rounded-lg overflow-hidden">
 		<!-- Single Cart Item (Repeat this section for each item in the cart) -->
 		{% for item in items %}
-		<div class="flex justify-between items-center p-4 border-b border-gray-200">
+
+		<!-- <div
+			class="flex justify-between items-center p-4 border-b border-gray-200"
+		></div> -->
+		<div class="grid grid-cols-5 gap-4">
 			<!-- Product Image -->
-			<div>
+			<div class="col-span-1">
 				<img
 					src="{{ item.product.imageURL }}"
 					alt="Product Image"
@@ -49,11 +53,12 @@
 			</div>
 
 			<!-- Product Name (Displayed above on md and higher screens) -->
-			<div>
+			<div class="col-span-2 md:col-span-2">
 				<h2 class="text-lg font-medium">{{ item.product.name }}</h2>
 			</div>
 
-			<div>
+			<!-- Price -->
+			<div class="col-span-1">
 				<span class="text-gray-600 md:mr-2">Price:</span>
 				<span class="text-gray-600 font-medium"
 					>&#8377;{{ item.product.price|floatformat:2 }}</span
@@ -61,30 +66,37 @@
 			</div>
 
 			<!-- Quantity -->
-			<div class="flex items-center">
-				<button
-					class="px-2 py-1 rounded-l-md border border-gray-300 hover:border-gray-400"
-				>
-					-
-				</button>
-				<span class="px-2 text-center border-y border-gray-300"
-					>{{ item.quantity }}</span
-				>
-				<button
-					class="px-2 py-1 rounded-r-md border border-gray-300 hover:border-gray-400"
-				>
-					+
-				</button>
+			<div class="col-span-1">
+				<div class="flex items-center float-right">
+					<button
+						data-product="{{ item.product.id }}"
+						data-action="remove"
+						class="update-cart px-2 py-1 rounded-l-md border border-gray-300 hover:border-gray-400"
+					>
+						-
+					</button>
+					<span class="px-2 text-center border-y border-gray-300"
+						>{{ item.quantity }}</span
+					>
+					<button
+						data-product="{{ item.product.id }}"
+						data-action="add"
+						class="update-cart px-2 py-1 rounded-r-md border border-gray-300 hover:border-gray-400"
+					>
+						+
+					</button>
+				</div>
 			</div>
 
-			<!-- Price -->
-			<div>
+			<!-- Subtotal -->
+			<div class="col-span-1">
 				<span class="text-gray-600 md:mr-2">Total:</span>
 				<span class="text-gray-600 font-semibold"
 					>&#8377;{{ item.get_total }}</span
 				>
 			</div>
 		</div>
+
 		{% endfor %}
 
 		<!-- End Single Cart Item -->
