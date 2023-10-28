@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Customer(models.Model):
@@ -86,7 +87,11 @@ class ShippingDetails(models.Model):
     city = models.CharField(max_length=50, null=False)
     state = models.CharField(max_length=50, null=False)
     pincode = models.CharField(max_length=50, null=False)
-    contact = models.IntegerField((""))
+    contact = PhoneNumberField()
 
     def __str__(self):
         return self.address
+    
+    class Meta:
+        verbose_name = "Shipping Details"
+        verbose_name_plural = "Shipping Details"  # Set the plural form explicitly

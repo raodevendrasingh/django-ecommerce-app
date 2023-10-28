@@ -45,10 +45,31 @@
 				}
 				return cookieValue;
 			}
-			const csrftoken = getToken("csrftoken");
+			var csrftoken = getToken("csrftoken");
+
+            function getCookie(name){
+                //split coockie string and get all the individual name=value pairs in an array
+                var cookieArr = document.cookie.split(';')
+
+                for(var i = 0; i < cookieArr.length; i++ ){
+                    var cookiePair = cookieArr[i].split('=')
+                    if(name == cookiePair[0].trim()){
+                        return decodeURIComponent(cookiePair[1])
+                    }
+                }
+                return null;
+            }
+            var cart = JSON.parse(getCookie('cart'))
+            if(cart == null){
+                cart = {}
+                console.log('Cart was created');
+                document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
+            }
+            console.log('Cart:', cart);
+
 		</script>
 	</head>
-	<body antialiased class="font-[poppins]">
+	<body class="font-[poppins]">
 		<nav
 			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between top-0 right-0 left-0 w-full z-10 fixed"
 		>
@@ -107,7 +128,7 @@
 
 		{% block content %} {% endblock %}
 
-		<footer class="bg-white rounded-lg shadow m-4 dark:bg-gray-800">
+		<footer class="bg-white mt-5 shadow dark:bg-gray-800">
 			<div
 				class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
 			>
