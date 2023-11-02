@@ -6,7 +6,14 @@
 <!-- content starts here -->
 {% block content %}
 
-<div class="mx-auto p-4 pt-24 container border shadow-md">
+<!-- show empty cart image if cartitems are null -->
+{% if cartItems == 0 %}
+    <div class="mt-20 flex justify-center items-center md:mt-[40px] ">
+        <img class="h-3/5 md:w-3/5 aspect-auto" src="{% static 'img/empty_cart_message.png' %}" alt="empty_cart_message">
+    </div>
+
+{% else %}
+<div class="mx-auto p-4 pt-16 container border shadow-md">
 	<button
 		class="border-2 border-slate-700 text-black px-2 py-2 rounded-md hover:bg-slate-700 hover:text-white"
 	>
@@ -39,9 +46,6 @@
 		<!-- Single Cart Item (Repeat this section for each item in the cart) -->
 		{% for item in items %}
 
-		<!-- <div
-			class="flex justify-between items-center p-4 border-b border-gray-200"
-		></div> -->
 		<div class="grid grid-cols-5 gap-4">
 			<!-- Product Image -->
 			<div class="col-span-1">
@@ -58,7 +62,7 @@
 			</div>
 
 			<!-- Price -->
-			<div class="col-span-1">
+			<div class="col-span-1  ">
 				<span class="text-gray-600 md:mr-2">Price:</span>
 				<span class="text-gray-600 font-medium"
 					>&#8377;{{ item.product.price|floatformat:2 }}</span
@@ -67,7 +71,7 @@
 
 			<!-- Quantity -->
 			<div class="col-span-1">
-				<div class="flex items-center float-right">
+				<div class="flex items-center">
 					<button
 						data-product="{{ item.product.id }}"
 						data-action="remove"
@@ -97,9 +101,12 @@
 			</div>
 		</div>
 
+        <hr class="my-1" />
+
 		{% endfor %}
 
 		<!-- End Single Cart Item -->
 	</div>
 </div>
+{% endif %}
 {% endblock content %} ds

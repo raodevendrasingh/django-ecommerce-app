@@ -6,16 +6,29 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Customer(models.Model):
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, null=False)
+    fname = models.CharField(max_length=50, null=False)
+    lname = models.CharField(max_length=50, null=True)
     email = models.EmailField(max_length=200, null=False)
+    password = models.CharField(max_length=128, default='123456')
+
+    def __str__(self):
+        return self.fname + self.lname
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-
+    
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Category"
 
 class Product(models.Model):
-    name = models.CharField(max_length=50, null=False)
-    price = models.FloatField()
+    name = models.CharField(max_length=100, null=False)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, default='item')
+    description = models.CharField(max_length=50, default='', blank=True, null=True)
+    price = models.DecimalField(default=0, max_digits=6,decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
 
@@ -29,6 +42,22 @@ class Product(models.Model):
         except:
             url = ''
         return url
+
+
+class Wishlist(models.Model):
+  customer = models.ForeignKey(Customer, on_delete=models.CASCADE) 
+  items = models.ManyToManyField(Product, through='WishlistItem')
+
+  def __str__(self):
+    return self.customer.name + "'s Wishlist"
+
+
+class WishlistItem(models.Model):
+  wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE)
+  product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.product.name
 
 
 class Order(models.Model):
@@ -95,3 +124,5 @@ class ShippingDetails(models.Model):
     class Meta:
         verbose_name = "Shipping Details"
         verbose_name_plural = "Shipping Details"  # Set the plural form explicitly
+
+

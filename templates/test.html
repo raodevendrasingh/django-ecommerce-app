@@ -1,0 +1,144 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %} Testing {% endblock %}
+
+<!-- content starts here -->
+{% block content %}
+
+<br />
+<br />
+<br />
+<br />
+<nav class="px-5 py-5 bg-slate-800 text-white">
+	<div class="flex justify-between items-center text-3xl">
+		<div>
+			<div class="">Logo</div>
+		</div>
+
+		<!-- search bar -->
+		<form>
+			<div class="flex items-center">
+				<button
+					id="dropdown-button"
+					data-dropdown-toggle="dropdown"
+					class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200"
+					type="button"
+				>
+					Categories
+					<i class="fa-solid fa-angle-down pl-2"></i>
+				</button>
+				<div
+					id="dropdown"
+					class="z-10 hidden bg-white divide-y divide-gray-100 absolute top-100  rounded-lg shadow w-44 dark:bg-gray-700"
+				>
+					<ul
+						class="py-2 text-sm text-slate-800 dark:text-gray-200"
+						aria-labelledby="dropdown-button"
+					>
+						<li>
+							<button
+								type="button"
+								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+							>
+								Tshirts
+							</button>
+						</li>
+						<li>
+							<button
+								type="button"
+								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+							>
+								Figurines
+							</button>
+						</li>
+						<li>
+							<button
+								type="button"
+								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+							>
+								Wallpapers
+							</button>
+						</li>
+						<li>
+							<button
+								type="button"
+								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+							>
+								Mobile Cases
+							</button>
+						</li>
+					</ul>
+				</div>
+				<div class="relative w-full">
+					<input
+						type="search"
+						id="search-dropdown"
+						class="block p-2.5 w-72 pr-8 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 outline-0"
+						placeholder="Search tshirts, figurines, cases, wallpapers...."
+						required
+					/>
+					<button
+						type="submit"
+						class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-gray-400 rounded-r-lg border-2 border-gray-400 subpixel-antialiased"
+					>
+						<i
+							class="fa-solid fa-magnifying-glass text-gray-800 text-sm absolute left-2 top-1/2 -translate-y-1/2"
+						></i>
+						<span class="sr-only">Search</span>
+					</button>
+				</div>
+			</div>
+		</form>
+
+		<div class="flex justify-between">
+			<div class="px-3">
+				<!-- Heart -->
+				<i
+					class="fa-regular fa-heart text-2xl text-gray-200 hover:text-red-600 transition duration-500"
+				></i>
+			</div>
+			<div class="px-3">
+				<!-- Cart -->
+				<i
+					class="fa-solid fa-cart-shopping text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+				></i>
+			</div>
+			<div class="px-3">
+				<!-- User -->
+				<i
+					class="fa-solid fa-user text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+				></i>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<script>
+	// Get button and dropdown elements
+	const btn = document.getElementById("dropdown-button");
+	const dropdown = document.getElementById("dropdown");
+
+	// Add click event to button
+	btn.addEventListener("click", () => {
+		// Toggle hidden class on dropdown
+		dropdown.classList.toggle("hidden");
+
+		// Toggle icon direction
+		const icon = btn.querySelector("i");
+		if (icon.classList.contains("fa-angle-down")) {
+			icon.classList.replace("fa-angle-down", "fa-angle-up");
+		} else {
+			icon.classList.replace("fa-angle-up", "fa-angle-down");
+		}
+	});
+
+	// Close dropdown if clicking outside
+	document.addEventListener("click", (event) => {
+		if (!event.target.matches("#dropdown-button")) {
+			dropdown.classList.add("hidden");
+		}
+	});
+</script>
+
+{% endblock %}

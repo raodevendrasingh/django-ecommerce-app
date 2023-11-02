@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %} Wishlist {% endblock %}
+
+<!-- content starts here -->
+{% block content %}
+
+<!-- show empty cart image if cartitems are null -->
+<!-- {% if wishlist_items %} -->
+<div class="mt-20 flex justify-center items-center md:mt-[40px]">
+	<img
+		class="h-3/5 md:w-3/5 aspect-auto"
+		src="{% static 'img/empty_wishlist_message.png' %}"
+		alt="empty_wishlist_message"
+	/>
+    hello
+</div>
+
+<!-- {% endif %} -->
+<!-- if condition ends  -->
+
+{% endblock content %}

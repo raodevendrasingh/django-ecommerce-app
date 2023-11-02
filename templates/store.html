@@ -2,7 +2,7 @@
 <!-- content starts here -->
 {% block content %}
 
-<div class="container mx-auto py-10">
+<div class="container mx-auto">
 	<!-- <h1 class="text-3xl font-semibold text-gray-800 mb-6">Products</h1> -->
 	<div class="p-2 grid grid-cols-2 md:grid-cols-4 gap-4">
 		{% for product in product %}
@@ -39,7 +39,7 @@
 		<!-- Repeat the above product card structure for the next 3 products -->
 	</div>
 
-	<!-- kdtn;oghdrtlnhld -->
+	<!--product card -->
 	<div
 		class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-20"
 	>
@@ -50,11 +50,10 @@
 		>
 			<!-- Card content -->
 			<div
-				class="relative m-3 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-gray-400 shadow-md"
+				class="relative m-3 flex w-full max-w-xs flex-col overflow-hidden rounded-md border border-gray-100 bg-gray-200 shadow-md"
 			>
-				<a
+				<div
 					class="relative mx-3 mt-3 flex h-60 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden-x"
-					href="#"
 				>
 					<img
 						class="object-cover rounded-lg"
@@ -65,14 +64,33 @@
 						class="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white"
 						>39% OFF</span
 					>
-				</a>
+					<!-- add-to-wishlist button -->
+					<span
+						class="absolute top-0 right-1 m- rounded-full text-center text-sm font-medium text-white"
+					>
+						<a
+							class="update-wishlist"
+							data-product="{{product.id}}"
+						>
+							<i
+								class="fa-regular fa-heart text-2xl p-1 text-red-500 hover:text-pink-600 transition duration-150"
+							></i>
+						</a>
+					</span>
+				</div>
 				<div class="mt-4 px-5 pb-5">
 					<a href="#">
-						<h5 class="text-xl tracking-tight text-slate-900">
+						<h5 class="text-[18px] tracking-tight text-slate-900">
 							{{ product.name }}
 						</h5>
 					</a>
 					<div class="mt-2 mb-5 flex items-center justify-between">
+						<div>
+							<span class="text-2xl font-bold text-slate-900"
+								>&#8377;{{ product.price|floatformat:0 }}</span
+							>
+							<span class="text-sm text-slate-900 line-through">$699</span>
+						</div>
 						<div class="flex items-center">
 							<svg
 								aria-hidden="true"
@@ -130,22 +148,17 @@
 								></path>
 							</svg>
 							<span
-								class="mr-2 ml-3 rounded bg-yellow-200 px-2.5 py-0.5 text-xs font-semibold"
+								class="mr-2 ml-2 rounded bg-yellow-200 px-1.5 py-0.5 text-xs font-semibold"
 								>5.0</span
 							>
 						</div>
-						<div>
-							<span class="text-3xl font-bold text-slate-900"
-								>&#8377;{{ product.price|floatformat:0 }}</span
-							>
-							<!-- <span class="text-sm text-slate-900 line-through">$699</span> -->
-						</div>
 					</div>
+					<!-- add-to-cart button -->
 					<div>
 						<a
 							data-product="{{product.id}}"
 							data-action="add"
-							class="flex items-center justify-center rounded-md bg-slate-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-slate-900 update-cart"
+							class="update-cart flex items-center justify-center rounded-md bg-slate-800 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-slate-900"
 							>Add to cart</a
 						>
 					</div>

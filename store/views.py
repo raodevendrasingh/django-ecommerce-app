@@ -5,7 +5,6 @@ import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
 
-
 def store(request):
     data = cartData(request)
     cartItems = data['cartItems']
@@ -14,6 +13,13 @@ def store(request):
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'store.html', context)
 
+
+def wishlist(request):
+    context = {}
+    return render(request, 'wishlist.html', context)
+
+def updateWishlist(request):
+    pass
 
 def cart(request):
     data = cartData(request)
@@ -24,17 +30,6 @@ def cart(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'cart.html', context)
-
-
-def checkout(request):
-    data = cartData(request)
-
-    cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-
-    context = {'items': items, 'order': order, 'cartItems': cartItems}
-    return render(request, 'checkout.html', context)
 
 
 def updateItem(request):
@@ -66,6 +61,17 @@ def updateItem(request):
     return JsonResponse('Item added', safe=False)
 
 
+def checkout(request):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    order = data['order']
+    items = data['items']
+
+    context = {'items': items, 'order': order, 'cartItems': cartItems}
+    return render(request, 'checkout.html', context)
+
+
 def processOrder(request):
     transaction_id = datetime.datetime.now().timestamp()
     data = json.loads(request.body)
@@ -73,11 +79,7 @@ def processOrder(request):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(
-        customer=customer, complete=False)
-        
-
-        
-
+            customer=customer, complete=False)
     else:
         customer, order = guestOrder(request, data)
 
@@ -90,13 +92,17 @@ def processOrder(request):
 
     if order.shipping == True:
         ShippingDetails.objects.create(
-            customer = customer,
-            order = order,
-            address = data['shipping']['address'],
-            city = data['shipping']['city'],
-            state = data['shipping']['state'],
-            pincode = data['shipping']['pincode'],
-            contact = data['shipping']['contact']
+            customer=customer,
+            order=order,
+            address=data['shipping']['address'],
+            city=data['shipping']['city'],
+            state=data['shipping']['state'],
+            pincode=data['shipping']['pincode'],
+            contact=data['shipping']['contact']
         )
 
     return JsonResponse('Transaction Successful!', safe=False)
+
+
+def testing(request):
+    return render(request, 'test.html')

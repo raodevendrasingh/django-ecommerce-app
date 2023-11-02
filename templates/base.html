@@ -12,19 +12,19 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="{% static 'css/tailwind.css' %}" />
+		<head>
+			<!-- One file includes all the Font Awesome Free icons and utilities -->
+			<link
+				href="{% static 'fontawesomefree/css/all.min.css' %}"
+				rel="stylesheet"
+				type="text/css"
+			/>
+		</head>
 		<link
 			rel="icon"
 			type="image/x-icon"
 			href="{% static 'img/favicon.ico' %}"
 		/>
-		<script
-			type="module"
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-		></script>
-		<script
-			nomodule
-			src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-		></script>
 		<script type="text/javascript">
 			var user = "{{request.user}}";
 
@@ -47,99 +47,144 @@
 			}
 			var csrftoken = getToken("csrftoken");
 
-            function getCookie(name){
-                //split coockie string and get all the individual name=value pairs in an array
-                var cookieArr = document.cookie.split(';')
+			function getCookie(name) {
+				//split coockie string and get all the individual name=value pairs in an array
+				var cookieArr = document.cookie.split(";");
 
-                for(var i = 0; i < cookieArr.length; i++ ){
-                    var cookiePair = cookieArr[i].split('=')
-                    if(name == cookiePair[0].trim()){
-                        return decodeURIComponent(cookiePair[1])
-                    }
-                }
-                return null;
-            }
-            var cart = JSON.parse(getCookie('cart'))
-            if(cart == null){
-                cart = {}
-                console.log('Cart was created');
-                document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
-            }
-            console.log('Cart:', cart);
-
+				for (var i = 0; i < cookieArr.length; i++) {
+					var cookiePair = cookieArr[i].split("=");
+					if (name == cookiePair[0].trim()) {
+						return decodeURIComponent(cookiePair[1]);
+					}
+				}
+				return null;
+			}
+			var cart = JSON.parse(getCookie("cart"));
+			if (cart == null) {
+				cart = {};
+				console.log("Cart was created");
+				document.cookie = "cart=" + JSON.stringify(cart) + ";domain=;path=/";
+			}
+			// console.log("Cart:", cart);
 		</script>
 	</head>
-	<body class="font-[poppins]">
+
+	<body class="font-[poppins] flex flex-col min-h-screen">
+		<!-- nav bar content -->
 		<nav
 			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between top-0 right-0 left-0 w-full z-10 fixed"
 		>
-			<div class="flex justify-between items-center">
+			<div class="flex items-center justify-between">
 				<span
 					class="text-2xl text-white font-[Poppins] cursor-pointer font-medium"
 				>
 					<a href="/">
-						<img class="h-10" src="{% static 'img/logo.png' %}" />
+						<img class="h-8" src="{% static 'img/logo.png' %}" alt="logo" />
 					</a>
 				</span>
-
-				<span class="text-3xl text-white cursor-pointer mx-2 md:hidden block">
-					<ion-icon name="menu" onclick="Menu(this)"></ion-icon>
-				</span>
+				<div class="md:hidden">
+					<button
+						id="hamburger-menu"
+						class="text-white focus:outline-none"
+						aria-label="Open navigation menu"
+					>
+						<i
+							class="fa-solid fa-bars text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+						></i>
+					</button>
+				</div>
 			</div>
-
 			<ul
-				class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500"
+				class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 hidden"
 			>
-				<li class="mx-6 my-6 sm:my-0 text-xl">
-					<a href="{% url 'cart' %}">
-						<div class="flex items-center">
-							<ion-icon
-								class="text-3xl text-white hover:text-gray-300 duration-500"
-								name="cart"
-							></ion-icon>
-							<span class="ml-1 text-white bg-red-500 p-1 rounded-lg text-xs">
-								{{ cartItems }}
-							</span>
-						</div>
-					</a>
-				</li>
+				<!-- Icons with gaps on right on large screens -->
+				<div class="flex items-center">
+					<div class="mx-4">
+						<!-- Wishlist heart icon -->
+						<a href="{% url 'wishlist' %}" class="flex items-center text-white">
+							<div class="relative">
+								<i
+									class="fa-regular fa-heart text-2xl text-gray-200 hover:text-red-600 transition duration-500"
+								></i>
+							</div>
+						</a>
+					</div>
 
-				<li>
-					<div class="relative">
-						<span
-							class="text-2xl text-gray-200 cursor-pointer pr-5 pl-3 mt-2"
+					<div class="mx-4">
+						<!-- Cart icon -->
+						<a href="{% url 'cart' %}" class="flex items-center text-white">
+							<div class="relative">
+								<i
+									class="fa-solid fa-cart-shopping text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+								></i>
+
+								<span
+									class="absolute -top-2.5 -right-2 flex items-center justify-center w-5 h-5 ml-1 text-xs rounded-full bg-red-500"
+								>
+									{{ cartItems }}
+								</span>
+							</div>
+						</a>
+					</div>
+
+					<div class="mx-4">
+						<!-- User menu -->
+						<button
+							class="flex items-center text-gray-200 hover:text-gray-400 transition duration-150 ease-in-out"
 							id="userDropdownToggle"
 						>
-							<ion-icon name="person"></ion-icon>
-						</span>
+							<i
+								class="fa-solid fa-user text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+							></i>
+							<!-- Hi, User -->
+						</button>
+
 						<ul
-							class="hidden absolute right-0 p-2 bg-slate-800 text-white rounded-lg"
 							id="userDropdown"
+							class="absolute right-0 text-white hidden w-32 py-2 mt-2 mr-2 bg-gray-800 rounded shadow-xl"
 						>
-							<li class="my-2 px-3"><a href="#">name</a></li>
-							<li class="my-2 px-3"><a href="#">Profile</a></li>
-							<li class="my-2 px-3"><a href="#">Settings</a></li>
-							<li class="my-2 px-3"><a href="#">Logout</a></li>
+							<li>
+								<a
+									href="#"
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Profile</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Settings</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Logout</a
+								>
+							</li>
 						</ul>
 					</div>
-				</li>
+				</div>
 			</ul>
 		</nav>
 
 		{% block content %} {% endblock %}
 
-		<footer class="bg-white mt-5 shadow dark:bg-gray-800">
+		<!-- footer content -->
+
+		<footer class="bg-white text-gray-400 mt-auto shadow dark:bg-gray-800">
 			<div
-				class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between"
+				class="flex flex-col justify-between p-4 md:flex-row md:items-center"
 			>
-				<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
-					>© 2023
+				<div class="mb-4 md:mb-0">
+					© 2023
 					<a href="{% url 'store' %}" class="hover:underline">AniMagic™</a>. All
 					Rights Reserved.
-				</span>
-				<ul
-					class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
-				>
+				</div>
+
+				<ul class="flex flex-wrap justify-center md:justify-end">
 					<li>
 						<a href="#" class="mr-4 hover:underline md:mr-6">About</a>
 					</li>
@@ -155,7 +200,16 @@
 				</ul>
 			</div>
 		</footer>
-
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuToggle = document.getElementById("hamburger-menu");
+                const navMenu = document.querySelector("ul");
+        
+                menuToggle.addEventListener("click", function () {
+                    navMenu.classList.toggle("hidden");
+                });
+            });
+        </script>
 		<script>
 			// Get references to the toggle button and the dropdown menu
 			const userDropdownToggle = document.getElementById("userDropdownToggle");
@@ -196,5 +250,6 @@
 			}
 		</script>
 		<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/wishlist.js' %}"></script>
 	</body>
 </html>

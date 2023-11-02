@@ -1,7 +1,7 @@
-var updateBtn = document.getElementsByClassName('update-cart')
+const updateCart = document.querySelectorAll('.update-cart')
 
-for( var i=0; i<updateBtn.length; i++){
-    updateBtn[i].addEventListener('click', function(e){
+for( var i=0; i<updateCart.length; i++){
+    updateCart[i].addEventListener('click', function(e){
         e.preventDefault()
         var productId = this.dataset.product
         var action = this.dataset.action
@@ -25,7 +25,7 @@ function addCookieItem(productId, action){
         if(cart[productId] == null){
             cart[productId] = {'quantity': 1}
         }
-        else{
+        else{  
             cart[productId]['quantity'] += 1
         }
     }
@@ -36,7 +36,7 @@ function addCookieItem(productId, action){
             delete cart[productId]
         }
     }
-    console.log('Cart:', cart);
+    //console.log('Cart:', cart);
     document.cookie = 'cart=' + JSON.stringify(cart) + ";domain=;path=/"
     location.reload()
 }
@@ -44,7 +44,7 @@ function addCookieItem(productId, action){
 function updateUserOrder(productId, action){
     console.log('User is logged in as', user)
 
-    var url = '/update-item/'
+    const url = '/update-item/'
 
     fetch(url, {
         method: 'POST',

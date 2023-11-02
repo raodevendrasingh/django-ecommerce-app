@@ -1,3 +1,4 @@
 node_modules
 # Ignore the products directory
-/products/
+static/products
+templates/temp.html

@@ -4,10 +4,13 @@ from .models import *
 # CREDENTIALS
 # admin
 # admin@aniwatch.com
-# admin1234
+# admin8animagic
 
 admin.site.register(Customer)
 admin.site.register(Product)
+admin.site.register(Category)
 admin.site.register(Order)
 admin.site.register(OrderItem)
 admin.site.register(ShippingDetails)
+admin.site.register(Wishlist)
+admin.site.register(WishlistItem)
