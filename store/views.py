@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
+from django.contrib import messages
 import json
 import datetime
 from .models import *
@@ -12,6 +13,22 @@ def store(request):
     products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'store.html', context)
+
+
+def category(request, cat):
+    data = cartData(request)
+    cartItems = data['cartItems']
+
+    cat = cat.replace('-', ' ')         #replace hyphens with spaces
+    #grab category form the url
+    try:
+        category = Category.objects.get(name=cat)
+        products = Product.objects.filter(category=category)
+        context = {'products': products, 'category': category, 'cartItems': cartItems}
+        return render(request, 'category.html', context)
+    except:
+        messages.success(request, ('That category does not exist!'))
+        return redirect('store')
 
 
 def wishlist(request):

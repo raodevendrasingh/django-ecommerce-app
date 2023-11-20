@@ -10,88 +10,97 @@
 <br />
 <br />
 <br />
-<nav class="px-5 py-5 bg-slate-800 text-white">
-	<div class="flex justify-between items-center text-3xl">
-		<div>
-			<div class="">Logo</div>
-		</div>
+<nav
+	class="p-5 bg-slate-900 shadow md:flex md:items-center text-white top-30 right-0 left-0 w-full z-10 fixed"
+>
+	<!-- class="px-5 py-5 bg-slate-800 text-white right-0"> -->
 
-		<!-- search bar -->
-		<form>
-			<div class="flex items-center">
-				<button
-					id="dropdown-button"
-					data-dropdown-toggle="dropdown"
-					class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200"
-					type="button"
+	<div class="flex justify-between items-center">
+		<!-- logo -->
+		<span class="text-2xl text-white font-[Poppins] cursor-pointer font-medium">
+			<a href="/">
+				<img class="h-8" src="{% static 'img/logo.png' %}" alt="logo" />
+			</a>
+		</span>
+	</div>
+	<!-- search bar -->
+	<form class="flex">
+		<div class="flex items-center">
+			<button
+				id="dropdown-button"
+				data-dropdown-toggle="dropdown"
+				class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200"
+				type="button"
+			>
+				Categories
+				<i class="fa-solid fa-angle-down pl-2"></i>
+			</button>
+			<div
+				id="dropdown"
+				class="z-10 hidden bg-white divide-y divide-gray-100 absolute top-100 rounded-lg shadow w-44 dark:bg-gray-700"
+			>
+				<ul
+					class="py-2 text-sm text-slate-800 dark:text-gray-200"
+					aria-labelledby="dropdown-button"
 				>
-					Categories
-					<i class="fa-solid fa-angle-down pl-2"></i>
-				</button>
-				<div
-					id="dropdown"
-					class="z-10 hidden bg-white divide-y divide-gray-100 absolute top-100  rounded-lg shadow w-44 dark:bg-gray-700"
-				>
-					<ul
-						class="py-2 text-sm text-slate-800 dark:text-gray-200"
-						aria-labelledby="dropdown-button"
-					>
-						<li>
-							<button
-								type="button"
-								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-							>
-								Tshirts
-							</button>
-						</li>
-						<li>
-							<button
-								type="button"
-								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-							>
-								Figurines
-							</button>
-						</li>
-						<li>
-							<button
-								type="button"
-								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-							>
-								Wallpapers
-							</button>
-						</li>
-						<li>
-							<button
-								type="button"
-								class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-							>
-								Mobile Cases
-							</button>
-						</li>
-					</ul>
-				</div>
-				<div class="relative w-full">
-					<input
-						type="search"
-						id="search-dropdown"
-						class="block p-2.5 w-72 pr-8 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 outline-0"
-						placeholder="Search tshirts, figurines, cases, wallpapers...."
-						required
-					/>
-					<button
-						type="submit"
-						class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-gray-400 rounded-r-lg border-2 border-gray-400 subpixel-antialiased"
-					>
-						<i
-							class="fa-solid fa-magnifying-glass text-gray-800 text-sm absolute left-2 top-1/2 -translate-y-1/2"
-						></i>
-						<span class="sr-only">Search</span>
-					</button>
-				</div>
+					<li>
+						<button
+							type="button"
+							class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Tshirts
+						</button>
+					</li>
+					<li>
+						<button
+							type="button"
+							class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Figurines
+						</button>
+					</li>
+					<li>
+						<button
+							type="button"
+							class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Wallpapers
+						</button>
+					</li>
+					<li>
+						<button
+							type="button"
+							class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+						>
+							Mobile Cases
+						</button>
+					</li>
+				</ul>
 			</div>
-		</form>
+			<div class="relative w-full">
+				<input
+					type="search"
+					id="search-dropdown"
+					class="block p-2.5 w-72 pr-8 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 outline-0"
+					placeholder="Search tshirts, figurines, cases, wallpapers...."
+					required
+				/>
+				<button
+					type="submit"
+					class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-gray-400 rounded-r-lg border-2 border-gray-400 subpixel-antialiased"
+				>
+					<i
+						class="fa-solid fa-magnifying-glass text-gray-800 text-sm absolute left-2 top-1/2 -translate-y-1/2"
+					></i>
+					<!-- <span class="sr-only">Search</span> -->
+				</button>
+			</div>
+		</div>
+	</form>
 
-		<div class="flex justify-between">
+	<!-- icons on right -->
+	<div class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 hidden">
+		<!-- <div class="flex justify-between"> -->
 			<div class="px-3">
 				<!-- Heart -->
 				<i
@@ -110,7 +119,7 @@
 					class="fa-solid fa-user text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
 				></i>
 			</div>
-		</div>
+		<!-- </div> -->
 	</div>
 </nav>
 
