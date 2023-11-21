@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.contrib import messages
 import json
@@ -133,3 +133,16 @@ def processOrder(request):
 
 def testing(request):
     return render(request, 'test.html')
+
+
+# view to remove item form wishlist or cart
+# def removeProduct(request, product_id):
+#     # data = json.loads(request.body)
+#     # productId = data['productId']
+#     # Assuming you have a Product model
+#     product = get_object_or_404(Product, id=product_id)
+
+#     # Delete the product
+#     product.delete()
+
+#     return JsonResponse({'message': 'Product removed successfully'})

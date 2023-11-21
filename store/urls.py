@@ -13,4 +13,6 @@ urlpatterns = [
     path('process-order/', views.processOrder, name='process-order'),
 
     path('test/', views.testing, name='store'),
+
+    # path('remove-product/<int:product_id>/', views.removeProduct, name='remove-product'),
 ]

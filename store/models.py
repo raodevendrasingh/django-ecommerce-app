@@ -101,10 +101,19 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(default=0, null=True, blank=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
+    # @property
+    # def get_total(self):
+    #     total = self.product.price * self.quantity
+    #     return total
     @property
     def get_total(self):
-        total = self.product.price * self.quantity
-        return total
+        if self.product and hasattr(self.product, 'price'):
+            total = self.product.price * self.quantity
+            return total
+        else:
+            # Handle the case where self.product is None or does not have a 'price' attribute
+            raise ValueError("Invalid product or product price not available.")
+
 
 
 class ShippingDetails(models.Model):
