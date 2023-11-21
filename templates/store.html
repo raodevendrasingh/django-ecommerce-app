@@ -38,10 +38,267 @@
 		<!-- product ends here -->
 		<!-- Repeat the above product card structure for the next 3 products -->
 	</div>
+	<!-- Component: Carousel with controls inside -->
+	<div class="relative w-full glide-01 pt-24">
+		<!-- Slides -->
+		<div class="overflow-hidden" data-glide-el="track">
+			<ul
+				class="relative w-full overflow-hidden p-0 whitespace-no-wrap flex flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform]"
+			>
+				<li>
+					<img
+						src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-01.jpg"
+						class="w-full max-w-full max-h-full m-auto"
+					/>
+				</li>
+				<li>
+					<img
+						src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-02.jpg"
+						class="w-full max-w-full max-h-full m-auto"
+					/>
+				</li>
+				<li>
+					<img
+						src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-03.jpg"
+						class="w-full max-w-full max-h-full m-auto"
+					/>
+				</li>
+				<li>
+					<img
+						src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-04.jpg"
+						class="w-full max-w-full max-h-full m-auto"
+					/>
+				</li>
+				<li>
+					<img
+						src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-05.jpg"
+						class="w-full max-w-full max-h-full m-auto"
+					/>
+				</li>
+			</ul>
+		</div>
+		<!-- Controls -->
+		<div
+			class="absolute left-0 flex items-center justify-between w-full h-0 px-4 top-1/2"
+			data-glide-el="controls"
+		>
+			<button
+				class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20"
+				data-glide-dir="<"
+				aria-label="prev slide"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-5 h-5"
+				>
+					<title>prev slide</title>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"
+					/>
+				</svg>
+			</button>
+			<button
+				class="inline-flex items-center justify-center w-8 h-8 transition duration-300 border rounded-full lg:w-12 lg:h-12 text-slate-700 border-slate-700 hover:text-slate-900 hover:border-slate-900 focus-visible:outline-none bg-white/20"
+				data-glide-dir=">"
+				aria-label="next slide"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.5"
+					stroke="currentColor"
+					class="w-5 h-5"
+				>
+					<title>next slide</title>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+					/>
+				</svg>
+			</button>
+		</div>
+	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.0.2/glide.js"></script>
+
+	<script>
+		var glide01 = new Glide(".glide-01", {
+			type: "carousel",
+			focusAt: "center",
+			perView: 3,
+			autoplay: 3000,
+			animationDuration: 700,
+			gap: 24,
+			classes: {
+				activeNav: "[&>*]:bg-slate-700",
+			},
+			breakpoints: {
+				1024: {
+					perView: 2,
+				},
+				640: {
+					perView: 1,
+				},
+			},
+		});
+
+		glide01.mount();
+	</script>
+	<!-- End Carousel with controls inside -->
+	<section>
+		<div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
+			<header class="text-center">
+				<h2 class="text-xl font-bold text-gray-900 sm:text-3xl">
+					New Collection
+				</h2>
+
+				<p class="max-w-md mx-auto mt-4 text-gray-500">
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
+					praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
+					natus?
+				</p>
+			</header>
+
+			<ul class="grid grid-cols-1 gap-4 mt-8 lg:grid-cols-3">
+				<li>
+					<a href="#" class="relative block group">
+						<img
+							src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+							alt=""
+							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+						/>
+
+						<div
+							class="absolute inset-0 flex flex-col items-start justify-end p-6"
+						>
+							<h3 class="text-xl font-medium text-white">Casual Trainers</h3>
+
+							<span
+								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+							>
+								Shop Now
+							</span>
+						</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="#" class="relative block group">
+						<img
+							src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+							alt=""
+							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+						/>
+
+						<div
+							class="absolute inset-0 flex flex-col items-start justify-end p-6"
+						>
+							<h3 class="text-xl font-medium text-white">Winter Jumpers</h3>
+
+							<span
+								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+							>
+								Shop Now
+							</span>
+						</div>
+					</a>
+				</li>
+
+				<li class="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
+					<a href="#" class="relative block group">
+						<img
+							src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
+							alt=""
+							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
+						/>
+
+						<div
+							class="absolute inset-0 flex flex-col items-start justify-end p-6"
+						>
+							<h3 class="text-xl font-medium text-white">Skinny Jeans Blue</h3>
+
+							<span
+								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
+							>
+								Shop Now
+							</span>
+						</div>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<!-- Logo Carousel animation -->
+	<div
+		x-data="{}"
+		x-init="$nextTick(() => {
+        let ul = $refs.logos;
+        ul.insertAdjacentHTML('afterend', ul.outerHTML);
+        ul.nextSibling.setAttribute('aria-hidden', 'true');
+    })"
+		class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]"
+	>
+		<ul
+			x-ref="logos"
+			class="flex items-center justify-center md:justify-start [&_li]:mx-8 [&_img]:max-w-none animate-infinite-scroll"
+		>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/attack-on-titan.png' %}"
+					class="w-auto h-28 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/black-clover.png' %}"
+					class="w-auto h-32 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/death-note.png' %}"
+					class="w-auto h-32 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/my-hero-academia.png' %}"
+					class="w-auto h-24 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/naruto.png' %}"
+					class="w-auto h-24 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/one-piece.png' %}"
+					class="w-auto h-24 max-w-full max-h-full m-auto"
+				/>
+			</li>
+			<li>
+				<img
+					src="{% static '/img/logo_carousel/one-punch-man.png' %}"
+					class="w-auto h-28 max-w-full max-h-full m-auto"
+				/>
+			</li>
+		</ul>
+	</div>
+	<!-- End: Logo Carousel animation -->
 	<!--product card -->
 	<div
-		class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pt-20"
+		class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
 	>
 		<!-- Your product cards go here -->
 		{% for product in products%}
@@ -68,10 +325,7 @@
 					<span
 						class="absolute top-0 right-1 m- rounded-full text-center text-sm font-medium text-white"
 					>
-						<a
-							class="update-wishlist"
-							data-product="{{product.id}}"
-						>
+						<a class="update-wishlist" data-product="{{product.id}}">
 							<i
 								class="fa-regular fa-heart text-2xl p-1 text-red-500 hover:text-pink-600 transition duration-150"
 							></i>
