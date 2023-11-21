@@ -15,12 +15,22 @@ def store(request):
     return render(request, 'store.html', context)
 
 
+def products(request, pk):
+    data = cartData(request)
+    cartItems = data['cartItems']
+
+    product = Product.objects.get(id=pk)
+    category = Category.objects.all()
+    context = {'product': product, 'cartItems': cartItems, 'category': category}
+    return render(request, 'product.html', context)
+
+
 def category(request, cat):
     data = cartData(request)
     cartItems = data['cartItems']
 
     cat = cat.replace('-', ' ')         #replace hyphens with spaces
-    #grab category form the url
+    #grab category from the url
     try:
         category = Category.objects.get(name=cat)
         products = Product.objects.filter(category=category)
