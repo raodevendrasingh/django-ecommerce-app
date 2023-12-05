@@ -135,6 +135,11 @@ def testing(request):
     return render(request, 'test.html')
 
 
+def userProfile(request, slug):
+    customer = get_object_or_404(Customer, user__username=slug)
+    return render(request, 'profile.html', {'customer': customer})
+
+
 # view to remove item form wishlist or cart
 # def removeProduct(request, product_id):
 #     # data = json.loads(request.body)

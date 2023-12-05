@@ -114,45 +114,44 @@
 							aria-labelledby="dropdown-button"
 						>
 							<li>
-                                <a href="{% url 'category' 'Tshirts'%}">
-                                    <button
-                                        type="button"
-                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >
-                                        Tshirts
-                                    </button>
-                                </a>
+								<a href="{% url 'category' 'Tshirts'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Tshirts
+									</button>
+								</a>
 							</li>
 							<li>
-                                <a href="{% url 'category' 'Figurines'%}">
-                                    <button
-                                        type="button"
-                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >
-                                        Figurines
-                                    </button>
-                                </a>
-
+								<a href="{% url 'category' 'Action Figures'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+                                    Action Figures
+									</button>
+								</a>
 							</li>
 							<li>
-                                <a href="{% url 'category' 'Wallpapers'%}">
-                                    <button
-                                        type="button"
-                                        class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >
-                                        Wallpapers
-                                    </button>
-                                </a>
+								<a href="{% url 'category' 'Wallpapers'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Wallpapers
+									</button>
+								</a>
 							</li>
 							<li>
-                                <a href="{% url 'category' 'Mobile Cases'%}">
-								<button
-									type="button"
-									class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-								>
-									Mobile Cases
-								</button>
-                            </a>
+								<a href="{% url 'category' 'Mobile Cases'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Mobile Cases
+									</button>
+								</a>
 							</li>
 						</ul>
 					</div>
@@ -166,7 +165,7 @@
 						/>
 						<button
 							type="submit"
-							class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-gray-700 rounded-r-lg border-[1px] border-gray-300 subpixel-antialiased"
+							class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-sky-950 rounded-r-lg border-[1px] border-gray-300 subpixel-antialiased"
 						>
 							<i
 								class="fa-solid fa-magnifying-glass text-gray-200 text-sm absolute left-2 top-1/2 -translate-y-1/2"
@@ -215,9 +214,16 @@
 							class="flex items-center text-gray-200 hover:text-gray-400 transition duration-150 ease-in-out"
 							id="userDropdownToggle"
 						>
-							<i
+							<a
+								href="#"
+								class="relative inline-flex items-center justify-center w-10 h-10 text-lg text-white rounded-full bg-sky-950"
+							>
+								DS
+							</a>
+
+							<!-- <i
 								class="fa-solid fa-user text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
-							></i>
+							></i> -->
 							<!-- Hi, User -->
 						</button>
 
@@ -227,7 +233,7 @@
 						>
 							<li>
 								<a
-									href="#"
+                                    href="{% url 'profile' 'customer.user.username' %}"
 									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
 									>Profile</a
 								>
@@ -282,8 +288,8 @@
 				</ul>
 			</div>
 		</footer>
-        <!-- dropdown script for categories  -->
-		<script> 
+		<!-- dropdown script for categories  -->
+		<script>
 			// Get elements
 			const dropdownBtn = document.getElementById("dropdown-button");
 			const dropdown = document.getElementById("dropdown");
@@ -317,7 +323,7 @@
 				});
 			});
 		</script>
-        <!-- dropdown script for usermenu  -->
+		<!-- dropdown script for usermenu  -->
 		<script>
 			// Get references to the toggle button and the dropdown menu
 			const userDropdownToggle = document.getElementById("userDropdownToggle");

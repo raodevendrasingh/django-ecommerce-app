@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% load static %}
+
+<!-- title -->
+{% block title %} Wishlist {% endblock %}
+
+<!-- content starts here -->
+{% block content %} 
+
+<!-- profile.html -->
+<h1>User Profile: {{ customer.name }}</h1>
+<p>Email: {{ customer.email }}</p>
+<!-- Add more details as needed -->
+<!-- {% if customer.user.username %}
+    <a href="{% url 'user_profile' slug=customer.user.username %}">View Profile</a>
+{% else %}
+    <p>User profile not available</p>
+{% endif %} -->
+
+{% endblock %}

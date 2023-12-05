@@ -113,12 +113,20 @@
 							XL
 						</li>
 					</ul>
-					{% elif product.category.name == 'Figurines' %}
-					<span
-						class="text-heading mb-2 mr-2 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold transition duration-200 ease-in-out md:text-sm"
-					>
-						OneSize
-					</span>
+					{% elif product.category.name == 'Action Figures' %}
+                    <ul class="colors -mr-3 flex flex-wrap">
+						<li
+							class="text-heading mb-2 mr-2 flex h-5 w-10 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-15 md:text-sm"
+						>
+							Full
+						</li>
+						<li
+							class="text-heading mb-2 mr-2 flex h-5 w-10 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-15 md:text-sm"
+						>
+							Mini
+						</li>
+                    </ul>    
+					
                     {% elif product.category.name == 'Mobile Cases' %}
                     <ul class="colors -mr-3 flex flex-wrap">
 						<li
@@ -130,16 +138,6 @@
 							class="text-heading mb-2 mr-2 flex cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold transition duration-200 ease-in-out hover:border-black  md:text-sm"
 						>
                         iPhone 15 Plus / iPhone 15 Pro Max
-						</li>
-						<!-- <li
-							class="text-heading mb-2 mr-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-11 md:text-sm"
-						>
-                        
-						</li>
-						<li
-							class="text-heading mb-2 mr-2 flex h-9 w-9 cursor-pointer items-center justify-center rounded border border-gray-100 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11 md:w-11 md:text-sm"
-						> -->
-                        
 						</li>
 					</ul>
                     {% elif product.category.name == 'Wallpapers' %}
@@ -195,7 +193,7 @@
 				>
 					<button
 						class="text-heading hover:bg-heading flex h-full w-10 flex-shrink-0 items-center justify-center border-e border-gray-300 transition duration-300 ease-in-out focus:outline-none md:w-12"
-						disabled=""
+						
 					>
 						+
 					</button>
@@ -221,27 +219,21 @@
 				<ul class="space-y-5 pb-1 text-sm">
 					<li>
 						<span class="text-heading inline-block pr-2 font-semibold">
-							SKU:
-						</span>
-						N/A
-					</li>
-					<li>
-						<span class="text-heading inline-block pr-2 font-semibold">
 							Category:
 						</span>
 						<a class="hover:text-heading transition hover:underline" href="#">
-							kids
+							18+
 						</a>
 					</li>
 					<li class="productTags">
 						<span class="text-heading inline-block pr-2 font-semibold">
-							Tags:
+							Tags: 
 						</span>
 						<a
 							class="hover:text-heading inline-block pr-1.5 transition last:pr-0 hover:underline"
 							href="#"
 						>
-							Sneakers
+							something
 						</a>
 					</li>
 				</ul>
@@ -252,6 +244,7 @@
 				>
 					<h2
 						class="text-heading pr-2 text-sm font-semibold leading-relaxed md:text-base lg:text-lg"
+                        onclick=""
 					>
 						Product Details
 					</h2>

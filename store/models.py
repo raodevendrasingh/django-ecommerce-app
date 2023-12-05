@@ -6,29 +6,34 @@ from phonenumber_field.modelfields import PhoneNumberField
 class Customer(models.Model):
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE)
-    fname = models.CharField(max_length=50, null=False)
-    lname = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50, null=False)
     email = models.EmailField(max_length=200, null=False)
     password = models.CharField(max_length=128, default='123456')
 
     def __str__(self):
-        return self.fname + self.lname
+        return self.name
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = "Category"
         verbose_name_plural = "Category"
 
+
 class Product(models.Model):
     name = models.CharField(max_length=100, null=False)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, default='item')
-    description = models.CharField(max_length=50, default='', blank=True, null=True)
-    price = models.DecimalField(default=0, max_digits=6,decimal_places=2)
+    size = models.CharField(max_length=20, null=True)
+    color = models.CharField(max_length=20, null=True)
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, default='item')
+    description = models.CharField(
+        max_length=500, default='', blank=True, null=True)
+    price = models.DecimalField(default=0, max_digits=6, decimal_places=2)
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)
 
@@ -45,19 +50,19 @@ class Product(models.Model):
 
 
 class Wishlist(models.Model):
-  customer = models.ForeignKey(Customer, on_delete=models.CASCADE) 
-  items = models.ManyToManyField(Product, through='WishlistItem')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    items = models.ManyToManyField(Product, through='WishlistItem')
 
-  def __str__(self):
-    return self.customer.name + "'s Wishlist"
+    def __str__(self):
+        return self.customer.name + "'s Wishlist"
 
 
 class WishlistItem(models.Model):
-  wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE)
-  product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    wishlist = models.ForeignKey(Wishlist, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
-  def __str__(self):
-    return self.product.name
+    def __str__(self):
+        return self.product.name
 
 
 class Order(models.Model):
@@ -115,7 +120,6 @@ class OrderItem(models.Model):
             raise ValueError("Invalid product or product price not available.")
 
 
-
 class ShippingDetails(models.Model):
     customer = models.ForeignKey(
         Customer, on_delete=models.SET_NULL, blank=True, null=True)
@@ -129,9 +133,7 @@ class ShippingDetails(models.Model):
 
     def __str__(self):
         return self.address
-    
+
     class Meta:
         verbose_name = "Shipping Details"
         verbose_name_plural = "Shipping Details"  # Set the plural form explicitly
-
-

@@ -38,7 +38,8 @@
 		<!-- product ends here -->
 		<!-- Repeat the above product card structure for the next 3 products -->
 	</div>
-	<!-- Component: Carousel with controls inside -->
+
+	<!-- Main Carousel with controls inside -->
 	<div class="relative w-full glide-01 pt-24">
 		<!-- Slides -->
 		<div class="overflow-hidden" data-glide-el="track">
@@ -153,6 +154,8 @@
 		glide01.mount();
 	</script>
 	<!-- End Carousel with controls inside -->
+
+    <!-- start of the collections section -->
 	<section>
 		<div class="max-w-screen-xl px-4 py-8 mx-auto sm:px-6 sm:py-12 lg:px-8">
 			<header class="text-center">
@@ -160,10 +163,10 @@
 					New Collection
 				</h2>
 
-				<p class="max-w-md mx-auto mt-4 text-gray-500">
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque
-					praesentium cumque iure dicta incidunt est ipsam, officia dolor fugit
-					natus?
+				<p class="max-w-xl mx-auto mt-4 text-gray-500">
+					Explore the ultimate anime merchandise collection featuring your
+					favorite characters and shows. From stylish apparel to exclusive
+					accessories, elevate your fandom with the best in anime gear.
 				</p>
 			</header>
 
@@ -171,7 +174,7 @@
 				<li>
 					<a href="#" class="relative block group">
 						<img
-							src="https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+							src="{% static '/products/levi-ackermann-figurine.png' %}"
 							alt=""
 							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
 						/>
@@ -179,7 +182,7 @@
 						<div
 							class="absolute inset-0 flex flex-col items-start justify-end p-6"
 						>
-							<h3 class="text-xl font-medium text-white">Casual Trainers</h3>
+							<h3 class="text-xl font-medium text-white">Action Figures</h3>
 
 							<span
 								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
@@ -193,7 +196,7 @@
 				<li>
 					<a href="#" class="relative block group">
 						<img
-							src="https://images.unsplash.com/photo-1624623278313-a930126a11c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+							src="{% static '/products/aot-survey-corps-iphone-case.png' %}"
 							alt=""
 							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
 						/>
@@ -201,7 +204,7 @@
 						<div
 							class="absolute inset-0 flex flex-col items-start justify-end p-6"
 						>
-							<h3 class="text-xl font-medium text-white">Winter Jumpers</h3>
+							<h3 class="text-xl font-medium text-white">Phone Cases</h3>
 
 							<span
 								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
@@ -215,7 +218,7 @@
 				<li class="lg:col-span-2 lg:col-start-2 lg:row-span-2 lg:row-start-1">
 					<a href="#" class="relative block group">
 						<img
-							src="https://images.unsplash.com/photo-1593795899768-947c4929449d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80"
+							src="{% static '/products/shoto-todoroki-tshirt.png' %}"
 							alt=""
 							class="object-cover w-full transition duration-500 aspect-square group-hover:opacity-90"
 						/>
@@ -223,7 +226,7 @@
 						<div
 							class="absolute inset-0 flex flex-col items-start justify-end p-6"
 						>
-							<h3 class="text-xl font-medium text-white">Skinny Jeans Blue</h3>
+							<h3 class="text-xl font-medium text-white">Tees</h3>
 
 							<span
 								class="mt-1.5 inline-block bg-black px-5 py-3 text-xs font-medium uppercase tracking-wide text-white"
@@ -236,9 +239,10 @@
 			</ul>
 		</div>
 	</section>
+    <!-- end of the collections section -->
 
 	<!-- Logo Carousel animation -->
-	<div
+	<section
 		x-data="{}"
 		x-init="$nextTick(() => {
         let ul = $refs.logos;
@@ -294,10 +298,11 @@
 				/>
 			</li>
 		</ul>
-	</div>
+	</section>
 	<!-- End: Logo Carousel animation -->
-	<!--product card -->
-	<div
+
+	<!--product cards section starts -->
+	<section
 		class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
 	>
 		<!-- Your product cards go here -->
@@ -335,7 +340,7 @@
 				<div class="mt-4 px-5 pb-5">
 					<a href="{% url 'products' product.id %}">
 						<h5 class="text-[18px] tracking-tight text-slate-900">
-							{{ product.name }}
+							{{ product.name }}        
 						</h5>
 					</a>
 					<div class="mt-2 mb-5 flex items-center justify-between">
@@ -420,7 +425,7 @@
 			</div>
 		</div>
 		{% endfor %}
-	</div>
+	</section>
 </div>
 
 {% endblock %}
