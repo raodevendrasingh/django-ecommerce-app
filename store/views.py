@@ -121,9 +121,11 @@ def processOrder(request):
         ShippingDetails.objects.create(
             customer=customer,
             order=order,
-            address=data['shipping']['address'],
-            city=data['shipping']['city'],
+            address_level_1=data['shipping']['address_level_1'],
+            address_level_2=data['shipping']['address_level_2'],
+            country=data['shipping']['country'],
             state=data['shipping']['state'],
+            city=data['shipping']['city'],
             pincode=data['shipping']['pincode'],
             contact=data['shipping']['contact']
         )
@@ -135,9 +137,9 @@ def testing(request):
     return render(request, 'test.html')
 
 
-def userProfile(request, slug):
-    customer = get_object_or_404(Customer, user__username=slug)
-    return render(request, 'profile.html', {'customer': customer})
+# def userProfile(request, slug):
+#     customer = get_object_or_404(Customer, user__username=slug)
+#     return render(request, 'profile.html', {'customer': customer})
 
 
 # view to remove item form wishlist or cart

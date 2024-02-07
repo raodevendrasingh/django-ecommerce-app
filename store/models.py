@@ -118,6 +118,10 @@ class OrderItem(models.Model):
         else:
             # Handle the case where self.product is None or does not have a 'price' attribute
             raise ValueError("Invalid product or product price not available.")
+    
+    def __str__(self):
+        return self.product
+
 
 
 class ShippingDetails(models.Model):
@@ -125,14 +129,16 @@ class ShippingDetails(models.Model):
         Customer, on_delete=models.SET_NULL, blank=True, null=True)
     order = models.ForeignKey(
         Order, on_delete=models.SET_NULL, blank=True, null=True)
-    address = models.CharField(max_length=50, null=False)
-    city = models.CharField(max_length=50, null=False)
+    address_level_1 = models.CharField(max_length=50, null=False)
+    address_level_2 = models.CharField(max_length=50, null=False)
+    country = models.CharField(max_length=50, null=False)
     state = models.CharField(max_length=50, null=False)
+    city = models.CharField(max_length=50, null=False)
     pincode = models.CharField(max_length=50, null=False)
     contact = PhoneNumberField()
 
     def __str__(self):
-        return self.address
+        return self.address_level_1
 
     class Meta:
         verbose_name = "Shipping Details"

@@ -12,7 +12,7 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('process-order/', views.processOrder, name='process-order'),
 
-    path('profile/<slug:slug>/', views.userProfile, name='profile'),
+    # path('profile/<slug:slug>/', views.userProfile, name='profile'),
 
     path('test/', views.testing, name='store'),
 

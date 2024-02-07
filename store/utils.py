@@ -61,8 +61,9 @@ def guestOrder(request, data):
     print('User is not authenticated!')
 
     print('COOKIES:', request.COOKIES)
-    fname = data['form']['fname']
-    lname = data['form']['lname']
+    # fname = data['form']['fname']
+    # lname = data['form']['lname']
+    name = data['form']['name'] #full_name
     email = data['form']['email']
 
     cookieData = cookieCart(request)
@@ -71,8 +72,9 @@ def guestOrder(request, data):
     customer, created = Customer.objects.get_or_create(
         email=email
     )
-    customer.fname = fname
-    customer.lname = lname
+    # customer.fname = fname
+    # customer.lname = lname
+    customer.name = name #full_name
     customer.save()
 
     order = Order.objects.create(

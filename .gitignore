@@ -7,6 +7,9 @@ static/products
 templates/temp.html
 templates/test.html
 
+# Misc Files
+ideas.txt
+
 ### Django ###
 *.log
 *.pot
