@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+# from ..razorpay.razorpay_integration import payment_success_view, payment_view
 
 urlpatterns = [
     path('', views.store, name='store'),
@@ -17,4 +18,7 @@ urlpatterns = [
     path('test/', views.testing, name='store'),
 
     # path('remove-product/<int:product_id>/', views.removeProduct, name='remove-product'),
+
+    # path('payment/', payment_view, name='payment'),
+    # path('payment/success/', payment_success_view, name='payment_success'),
 ]

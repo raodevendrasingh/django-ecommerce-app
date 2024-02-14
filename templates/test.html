@@ -1,3 +1,195 @@
+<nav
+			class="p-5 bg-slate-900 shadow md:flex md:items-center md:justify-between top-0 right-0 left-0 w-full z-10 fixed"
+		>
+            <!-- site logo------------------------------------------------------------------------------------------------------>
+			<div class="flex items-center justify-between">
+				<span
+					class="text-2xl text-white font-[Poppins] cursor-pointer font-medium"
+				>
+					<a href="/">
+						<img class="h-8" src="{% static 'img/logo.png' %}" alt="logo" />
+					</a>
+				</span>
+				<div class="md:hidden">
+					<button
+						id="hamburger-menu"
+						class="text-white focus:outline-none"
+						aria-label="Open navigation menu"
+					>
+						<i
+							class="fa-solid fa-bars text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+						></i>
+					</button>
+				</div>
+			</div>
+            <!-- search bar in navigation -------------------------------------------------------------------------------------->
+			<form class="md:flex hidden">
+				<div class="flex items-center">
+					<button
+						id="dropdown-button"
+						data-dropdown-toggle="dropdown"
+						class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200"
+						type="button"
+					>
+						Categories
+						<i class="fa-solid fa-angle-down pl-2"></i>
+					</button>
+					<div
+						id="dropdown"
+						class="z-10 hidden divide-y divide-gray-100 absolute top-16 rounded-lg shadow w-[132px] bg-gray-700"
+					>
+						<ul
+							class="py-2 text-sm text-slate-800 dark:text-gray-200"
+							aria-labelledby="dropdown-button"
+						>
+							<li>
+								<a href="{% url 'category' 'Tshirts'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Tshirts
+									</button>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'category' 'Action Figures'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+                                    Action Figures
+									</button>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'category' 'Wallpapers'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Wallpapers
+									</button>
+								</a>
+							</li>
+							<li>
+								<a href="{% url 'category' 'Mobile Cases'%}">
+									<button
+										type="button"
+										class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+									>
+										Mobile Cases
+									</button>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="relative w-full shrink">
+						<input
+							type="search"
+							id="search-dropdown"
+							class="block p-2.5 w-80 pr-8 z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 outline-0"
+							placeholder="Search tshirts, figurines, cases, wallpapers...."
+							required
+						/>
+						<button
+							type="submit"
+							class="absolute top-0 right-0 px-2 py-2 w-8 text-xs h-full pr-1 text-white bg-sky-950 rounded-r-lg border-[1px] border-gray-300 subpixel-antialiased"
+						>
+							<i
+								class="fa-solid fa-magnifying-glass text-gray-200 text-sm absolute left-2 top-1/2 -translate-y-1/2"
+							></i>
+							<span class="sr-only">Search</span>
+						</button>
+					</div>
+				</div>
+			</form>
+            <!-- icons on the right side ------------------------------------------------------------------------------------>
+			<div
+				class="bg-slate-900 md:flex md:items-center md:z-auto md:static absolute w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 hidden"
+			>
+				<!-- Icons with gaps on right on large screens -->
+				<div class="flex items-center">
+					<div class="mx-4">
+						<!-- Wishlist heart icon -->
+						<a href="{% url 'wishlist' %}" class="flex items-center text-white">
+							<div class="relative">
+								<i
+									class="fa-regular fa-heart text-2xl text-gray-200 hover:text-red-600 transition duration-500"
+								></i>
+							</div>
+						</a>
+					</div>
+
+					<div class="mx-4">
+						<!-- Cart icon -->
+						<a href="{% url 'cart' %}" class="flex items-center text-white">
+							<div class="relative">
+								<i
+									class="fa-solid fa-cart-shopping text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+								></i>
+
+								<span
+									class="absolute -top-2.5 -right-2 flex items-center justify-center w-5 h-5 ml-1 text-xs rounded-full bg-red-500"
+								>
+									{{ cartItems }}
+								</span>
+							</div>
+						</a>
+					</div>
+
+					<div class="mx-4">
+						<!-- User menu -->
+						<button
+							class="flex items-center text-gray-200 hover:text-gray-400 transition duration-150 ease-in-out"
+							id="userDropdownToggle"
+						>
+							<a
+								href="#"
+								class="relative inline-flex items-center justify-center w-10 h-10 text-lg text-white rounded-full bg-sky-950"
+							>
+								DS
+							</a>
+
+							<!-- <i
+								class="fa-solid fa-user text-2xl text-gray-200 hover:text-slate-400 transition duration-500"
+							></i> -->
+							<!-- Hi, User -->
+						</button>
+
+						<ul
+							id="userDropdown"
+							class="absolute right-0 text-white hidden w-32 py-2 mt-2 mr-2 bg-gray-800 rounded-lg shadow-xl"
+						>
+							<li>
+								<a
+                                    href=""
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Profile</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Settings</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="block px-6 py-2 hover:bg-gray-700 transition duration-150 ease-in-out"
+									>Logout</a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+
+
 {% extends 'base.html' %} {% load static %}
 
 <!-- title -->
