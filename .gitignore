@@ -9,6 +9,7 @@ templates/test.html
 
 # Misc Files
 ideas.txt
+neon_config.txt
 
 ### Django ###
 *.log
