@@ -25,8 +25,16 @@ class Category(models.Model):
         verbose_name_plural = "Category"
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     name = models.CharField(max_length=100, null=False)
+    tags = models.ManyToManyField(Tag)
     size = models.CharField(max_length=20, null=True)
     color = models.CharField(max_length=20, null=True)
     category = models.ForeignKey(
@@ -118,10 +126,9 @@ class OrderItem(models.Model):
         else:
             # Handle the case where self.product is None or does not have a 'price' attribute
             raise ValueError("Invalid product or product price not available.")
-    
+
     def __str__(self):
         return self.product
-
 
 
 class ShippingDetails(models.Model):

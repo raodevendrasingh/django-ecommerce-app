@@ -4,8 +4,8 @@ node_modules
 static/products
 
 # Temporary Templates
-templates/temp.html
-templates/test.html
+temp.html
+test.html
 
 # Misc Files
 ideas.txt

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
+from django.db.models import Q
 from django.contrib import messages
 import json
 import datetime
@@ -39,6 +40,18 @@ def category(request, cat):
     except:
         messages.success(request, ('That category does not exist!'))
         return redirect('store')
+
+
+def item_search(request):
+    query = request.GET.get('q')
+
+    # Search products by name or tags
+    products = Product.objects.filter(
+        Q(name__icontains=query) | Q(tags__name__icontains=query)
+    ).distinct()
+
+    context = {'products': products, 'query': query}
+    return render(request, 'search_results.html', context)
 
 
 def wishlist(request):
