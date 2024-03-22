@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+
 import json
 import datetime
 from .models import *
 from .utils import cookieCart, cartData, guestOrder
+
 
 def store(request):
     data = cartData(request)
@@ -22,7 +25,8 @@ def products(request, pk):
 
     product = Product.objects.get(id=pk)
     category = Category.objects.all()
-    context = {'product': product, 'cartItems': cartItems, 'category': category}
+    context = {'product': product,
+               'cartItems': cartItems, 'category': category}
     return render(request, 'product.html', context)
 
 
@@ -30,12 +34,13 @@ def category(request, cat):
     data = cartData(request)
     cartItems = data['cartItems']
 
-    cat = cat.replace('-', ' ')         #replace hyphens with spaces
-    #grab category from the url
+    cat = cat.replace('-', ' ')  # replace hyphens with spaces
+    # grab category from the url
     try:
         category = Category.objects.get(name=cat)
         products = Product.objects.filter(category=category)
-        context = {'products': products, 'category': category, 'cartItems': cartItems}
+        context = {'products': products,
+                   'category': category, 'cartItems': cartItems}
         return render(request, 'category.html', context)
     except:
         messages.success(request, ('That category does not exist!'))
@@ -54,12 +59,36 @@ def item_search(request):
     return render(request, 'search_results.html', context)
 
 
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, ('You have been logged in!'))
+            return redirect('/')
+        else:
+            messages.success(request, ('There was an error, please try again!'))
+            return redirect('login/')
+    else:
+        return render(request, 'login.html')
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, ('You have been logged out!'))
+    return redirect('/')
+
+
 def wishlist(request):
     context = {}
     return render(request, 'wishlist.html', context)
 
+
 def updateWishlist(request):
     pass
+
 
 def cart(request):
     data = cartData(request)
