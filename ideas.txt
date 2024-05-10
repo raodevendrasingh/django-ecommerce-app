@@ -1,5 +1,5 @@
 for collections
--villain collections = [light, shigaraki, ]
+-villain collections = [light, shigaraki]
 -hero collections = [deku, uraraka, almight, one-punch-man]
 -female lead = [misa-amane, uraraka] 
 -anime collection = [all from one anime]
